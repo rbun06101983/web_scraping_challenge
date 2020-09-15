@@ -3,6 +3,9 @@ from splinter import Browser
 from bs4 import BeautifulSoup
 import requests
 import pandas as pd
+import pymongo
+from flask import Flask, render_template, redirect
+from flask_pymongo import PyMongo
 
 def init_browser():
     executable_path = {'executable_path': 'chromedriver.exe'}
@@ -23,7 +26,7 @@ def scrape():
     #Scraping for the latest news title and assigning to a variable news_title
     news_title=news_soup.find_all('div', class_='content_title')[-2].text
     #Scraping for the latest paragraph text and assigning to a variable news_p
-    news_p=news_soup.find_all("div", class_="article_teaser_body")[0].text
+    news_p=news_soup.find_all("div", class_="rollover_description_inner")[-2].text
 
     #Scraping JPL Mars Space Images - Featured Image
     #url of webpage that is going to be scraped
