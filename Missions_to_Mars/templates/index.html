@@ -36,18 +36,17 @@
     <hr>
     <div class="row">
         <div class="col-md-8 border">
-          <h2 class=""><u>Featured Mars Image</u></h2> 
-          </br>
-          <img src="{{mars.featured_image_url}}" alt="Features Mars Image">
-        </div>
-        <div class="col-md-4">
+            <h2 class=""><u>Featured Mars Image</u></h2> 
+             </br>
+            <img src="{{mars.featured_image_url}}" alt="Features Mars Image">
+         </div>
+         <div class="col-md-4">
+             <div class="row">
+               <h5>Mars Facts</h5>
+                 {{ mars.fact_table | safe }}
+             </div>
           </div>
-          </br>
-          <div class="border">
-            <h5>Mars Facts</h5>
-              {{ mars.fact_table | safe }}
-          </div>
-        </div>
+   </div>
     <hr>
     <div class="row">
         <div class="col-md-8 offset-4">
