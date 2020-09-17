@@ -30,15 +30,16 @@ def scrape():
 
     #Scraping JPL Mars Space Images - Featured Image
     #url of webpage that is going to be scraped
-    jpl_url="https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars"
-    browser.visit(jpl_url)
+    jpl_nasa_url="https://www.jpl.nasa.gov"
+    images_url="https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars"
+    browser.visit(images_url)
     #pulling the data
     html=browser.html
     #creating BeautifulSoup object  parse with 'lxml'
     images_soup=BeautifulSoup(html, "html.parser")
     #Retrieving the the featured image link
     relative_image_path=images_soup.find_all('img')[3]['src']
-    featured_image_url=jpl_url + relative_image_path
+    featured_image_url=jpl_nasa_url + relative_image_path
     
     #Scraping Mars Fact
     #url of webpage that is going to be scraped
@@ -96,5 +97,5 @@ def scrape():
         "hemisphere_images":hemispheres_image_urls
     }   
 
-return mars_dictionary
+    return mars_dictionary
 
