@@ -17,16 +17,16 @@ def scrape():
 
     #Scarping the Mars Nasa News Page
     #url of webpage that is going to be scraped
-    url="https://mars.nasa.gov/news/"
+    url="https://mars.nasa.gov/news/?page=0&per_page=40&order=publish_date+desc%2Ccreated_at+desc&search=&category=19%2C165%2C184%2C204&blank_scope=Latest"
     browser.visit(url)
     #pulling the data
     html=browser.html
     #creating BeautifulSoup object  parse with 'lxml'
     news_soup=BeautifulSoup(html, "html.parser")
     #Scraping for the latest news title and assigning to a variable news_title
-    news_title=news_soup.find_all('div', class_='content_title')[-2].text
+    news_title=news_soup.find("li", class_="slide").find("div", class_="content_title").text
     #Scraping for the latest paragraph text and assigning to a variable news_p
-    news_p=news_soup.find_all("div", class_="rollover_description_inner")[-2].text
+    news_p=news_soup.find("li", class_="slide").find("div", class_="article_teaser_body").text
 
     #Scraping JPL Mars Space Images - Featured Image
     #url of webpage that is going to be scraped
