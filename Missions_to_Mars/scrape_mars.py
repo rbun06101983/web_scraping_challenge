@@ -9,11 +9,11 @@ from flask_pymongo import PyMongo
 
 def init_browser():
     executable_path = {'executable_path': 'chromedriver.exe'}
-    browser = Browser('chrome', **executable_path, headless=False)
+    return Browser('chrome', **executable_path, headless=False)
 
 def scrape():
     browser=init_browser()
-    mars_dict={}
+    mars_dictionary={}
 
     #Scarping the Mars Nasa News Page
     #url of webpage that is going to be scraped
